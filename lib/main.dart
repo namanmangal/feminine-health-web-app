@@ -29,23 +29,6 @@ void main() {
     @override
     Widget build(BuildContext context) {
       return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            children: [
-              const Text(
-                'Feminine Health',
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-              ),
-              const Spacer(),
-              IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: () {
-                  // Implement your search functionality here
-                },
-              ),
-            ],
-          ),
-        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
