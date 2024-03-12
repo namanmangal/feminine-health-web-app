@@ -1,8 +1,12 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HelpScreen extends StatefulWidget {
+  const HelpScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HelpScreenState createState() => _HelpScreenState();
 }
 
@@ -80,12 +84,12 @@ class _HelpScreenState extends State<HelpScreen> {
 
     if (query.isNotEmpty) {
       List<Map<String, String>> filteredSearchList = [];
-      searchList.forEach((question) {
+      for (var question in searchList) {
         if (question['question']!.toLowerCase().contains(query.toLowerCase()) ||
             question['answer']!.toLowerCase().contains(query.toLowerCase())) {
           filteredSearchList.add(question);
         }
-      });
+      }
       setState(() {
         filteredQuestions = filteredSearchList;
       });
@@ -100,7 +104,7 @@ class _HelpScreenState extends State<HelpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Help Center'),
+        title: const Text('Help Center'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -110,7 +114,7 @@ class _HelpScreenState extends State<HelpScreen> {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search for a question...',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -139,9 +143,9 @@ class _HelpScreenState extends State<HelpScreen> {
             onPressed: () {
               _launchGoogleForm();
             },
-            child: Text('Email Us'),
+            child: const Text('Email Us'),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
         ],
       ),
     );

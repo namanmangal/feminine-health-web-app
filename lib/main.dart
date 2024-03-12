@@ -5,13 +5,15 @@ import 'package:app1/HelpScreen.dart';
 
 
 void main() {
-    runApp(MyApp());
+    runApp(const MyApp());
   }
 
   class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
     @override
     Widget build(BuildContext context) {
-      return MaterialApp(
+      return const MaterialApp(
         home: HomeScreen(),
       );
     }
@@ -22,6 +24,8 @@ void main() {
   // ... Your imports and other code ...
 
   class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
     @override
     Widget build(BuildContext context) {
       return Scaffold(
@@ -51,17 +55,17 @@ void main() {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CustomButton('Obulama Eats', SubCategoryScreen('Obulama Eats', obulamaEatsCategories), Colors.teal),
-                  CustomButton('Hedhi Help', SubCategoryScreen('HedhiHelp', hedhiHelpCategories), Colors.orange),
-                  CustomButton('Senga Guide', SubCategoryScreen('SengaSafe', sengaSafeCategories), Colors.red),
+                  CustomButton('Hedhi Help', SubCategoryScreen('Hedhi Help', hedhiHelpCategories), Colors.orange),
+                  CustomButton('Senga Guide', SubCategoryScreen('Senga Guide', sengaSafeCategories), Colors.red),
                   CustomButton('Omuwala Power', SubCategoryScreen('Omuwala Power', omuwalaPowerCategories), Colors.purple),
-                  CustomButton('Omwana Thrive', SubCategoryScreen('OmwanaThrive', omwanaThriveCategories), Colors.green),
+                  CustomButton('Omwana Thrive', SubCategoryScreen('Omwana Thrive', omwanaThriveCategories), Colors.green),
                 ],
               ),
               const SizedBox(height: 16),
               Image.asset(
                 'assets/Womenhealth.jpeg',
-                height: 450,
-                width: 400,
+                height: 450, // Set the desired height
+                width: 450,  // Set the desired width
                 fit: BoxFit.contain,
               ),
               /*const SizedBox(height: 16),
@@ -162,7 +166,7 @@ void main() {
             );
           },
           style: ElevatedButton.styleFrom(
-            primary: color,
+            backgroundColor: color,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10), // Adjust the border radius as needed
@@ -181,6 +185,8 @@ void main() {
     }
   }
   class ObulamaEatsScreen extends StatelessWidget {
+  const ObulamaEatsScreen({super.key});
+
     @override
     Widget build(BuildContext context) {
       return SubCategoryScreen('Obulama Eats', obulamaEatsCategories);
@@ -191,7 +197,7 @@ void main() {
   final String title;
   final Map<String, List<String>> categoryImageMap;
 
-  SubCategoryScreen(this.title, this.categoryImageMap);
+  const SubCategoryScreen(this.title, this.categoryImageMap, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -240,7 +246,7 @@ void main() {
         ),
         child: Text(
           category,
-          style: const TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16, color: Colors.white),
         ),
       ),
     );
@@ -253,7 +259,7 @@ void main() {
     final String title;
     final List<String> imagePaths;
 
-    ImageSliderScreen(this.title, this.imagePaths);
+    const ImageSliderScreen(this.title, this.imagePaths, {super.key});
 
     @override
     Widget build(BuildContext context) {
@@ -269,9 +275,10 @@ void main() {
   class ImageSlider extends StatefulWidget {
     final List<String> imagePaths;
 
-    ImageSlider(this.imagePaths);
+    const ImageSlider(this.imagePaths, {super.key});
 
     @override
+    // ignore: library_private_types_in_public_api
     _ImageSliderState createState() => _ImageSliderState();
   }
 
@@ -297,7 +304,7 @@ void main() {
               widget.imagePaths[index],
               height: 200,
               width: double.infinity,
-              fit: BoxFit.cover,
+              fit: BoxFit.fitHeight,
             ),
           );
         },
@@ -308,7 +315,7 @@ void main() {
   class SingleImageView extends StatelessWidget {
     final String imagePath;
 
-    SingleImageView(this.imagePath);
+    const SingleImageView(this.imagePath, {super.key});
 
     @override
     Widget build(BuildContext context) {
@@ -355,7 +362,7 @@ void main() {
       'assets/Slide 20 - Pregnancy.png',
       'assets/Slide 21 - Pregnancy.png',
     ],
-    'Infants': [
+    'Infants (<1 year)': [
       'assets/Slide 22 - Infants.png',
       'assets/Slide 23 - Infants.png',
       'assets/Slide 24 - Infants.png',
@@ -363,10 +370,8 @@ void main() {
       'assets/Slide 26 - Infants.png',
       'assets/Slide 27 - Infants.png',
       'assets/Slide 28 - Infants.png',
-      'assets/Slide 27 - Infants.png',
-      'assets/Slide 28 - Infants.png',
     ],
-    'Children': [
+    'Children (1+ years)': [
       'assets/Slide 29 - Children.png',
       'assets/Slide 30 - Children.png',
       'assets/Slide 31 - Children.png',
@@ -376,14 +381,16 @@ void main() {
     'Food Guides': [
       'assets/Slide 34 - Food Guides.png',
       'assets/Slide 35 - Food Guides_b.png',
-      'assets/Slide 36 - Food Guides_b.png',
       'assets/Slide 37 - Food Guides_b.png',
       'assets/Slide 38 - Food Guides_b.png',
     ],
   };
 
   class VocabularyListScreen extends StatefulWidget {
+  const VocabularyListScreen({super.key});
+
     @override
+    // ignore: library_private_types_in_public_api
     _VocabularyListScreenState createState() => _VocabularyListScreenState();
   }
 
@@ -485,13 +492,13 @@ void main() {
 
       if (query.isNotEmpty) {
         List<Map<String, String>> filteredSearchList = [];
-        searchList.forEach((word) {
+        for (var word in searchList) {
           if (word['word']!.toLowerCase().contains(query.toLowerCase()) ||
               word['section']!.toLowerCase().contains(query.toLowerCase()) ||
               word['definition']!.toLowerCase().contains(query.toLowerCase())) {
             filteredSearchList.add(word);
           }
-        });
+        }
         setState(() {
           filteredList = filteredSearchList;
         });
@@ -622,34 +629,31 @@ void main() {
 
   Map<String, List<String>> sengaSafeCategories = {
     'Senga Guide 1': [
-    'assets/SengaGuide/SengaModule1_1.jpg', 
+    'assets/SengaModule1_1.jpg', 
     'assets/Senga Module 1_2.png',
     'assets/Senga Module 1_3.png',
     'assets/Senga Module 1_4.png',
     'assets/Senga Module 1_5.png',
     'assets/Senga Module 1_6.png',
     'assets/Senga Module 1_7.png',
-    'assets/Senga Module 1_8.png',
-    'assets/Senga Module 1_9.png',
-    'assets/Senga Module 1_10.png',
-    'assets/Senga Module 1_11.png',
-    'assets/Senga Module 1_12.png',
-    'assets/Senga Module 1_13.png',
+    'assets/Senga Module 1-8.png',
+    'assets/Senga Module 1-9.png',
+    'assets/Senga Module 1-10.png',
+    'assets/Senga Module 1-11.png',
+    'assets/Senga Module 1-12.png',
+    'assets/Senga Module 1-13.png',
   ],
   'Senga Guide 2': [
-    'assets/Senga Module 2_1.png',
-    'assets/Senga Module 2_2.png',
-    'assets/Senga Module 2_3.png',
-    'assets/Senga Module 2_4.png',
-    'assets/Senga Module 2_5.png',
-    'assets/Senga Module 2_6.png',
-    'assets/Senga Module 2_7.png',
-    'assets/Senga Module 2_8.png',
-    'assets/Senga Module 2_9.png',
-    'assets/Senga Module 2_10.png',
-    'assets/Senga Module 2_11.png',
-    'assets/Senga Module 2_12.png',
-    'assets/Senga Module 2_13.png',
+    'assets/Senga Module 2-1.png',
+    'assets/Senga Module 2-2.png',
+    'assets/Senga Module 2-3.png',
+    'assets/Senga Module 2-4.png',
+    'assets/Senga Module 2-5.png',
+    'assets/Senga Module 2-6.png',
+    'assets/Senga Module 2-7.png',
+    'assets/Senga Module 2-8.png',
+    'assets/Senga Module 2-9.png',
+    'assets/Senga Module 2-10.png',
   ],
     
   };
