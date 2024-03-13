@@ -14,6 +14,7 @@ void main() {
     @override
     Widget build(BuildContext context) {
       return const MaterialApp(
+        title: 'Obulamu Choices',
         home: HomeScreen(),
       );
     }
