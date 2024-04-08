@@ -47,7 +47,7 @@ void main() {
               ),
               const SizedBox(height: 16),
               Image.asset(
-                'assets/Womenhealth.jpeg',
+                "assets/WomenHealth.jpeg",
                 height: 450, // Set the desired height
                 width: 450,  // Set the desired width
                 fit: BoxFit.contain,
@@ -288,7 +288,7 @@ void main() {
               widget.imagePaths[index],
               height: 200,
               width: double.infinity,
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.scaleDown,
             ),
           );
         },
