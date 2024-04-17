@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app1/HelpScreen.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 
 
@@ -114,6 +115,16 @@ void main() {
                 },
                 child: const Text('Need Help?'),
               ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyPdfViewer()),
+                    );
+                },
+                child: const Text('Privacy Policy'),
+              ),
 
             ],
           ),
@@ -121,7 +132,26 @@ void main() {
       );
     }
   }
+  class MyPdfViewer extends StatefulWidget{
+    const MyPdfViewer({super.key});
 
+    @override
+    State<MyPdfViewer> createState() => _MyPdfViewerState();
+  }
+
+  class _MyPdfViewerState extends State<MyPdfViewer>{
+    @override
+    Widget build(BuildContext context){
+      return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text("Privacy Policy"),
+        ),
+        body: SfPdfViewer.asset('assets/Rose_mobile_applications_privacy_April2024.pdf',
+        scrollDirection: PdfScrollDirection.vertical),
+      );
+    }
+  }
   // ... Your other classes and data ...
 
 
@@ -367,6 +397,7 @@ void main() {
       'assets/Slide 35 - Food Guides_b.png',
       'assets/Slide 37 - Food Guides_b.png',
       'assets/Slide 38 - Food Guides_b.png',
+      'assets/Slide 37 - Food Guides-revB.png',
     ],
   };
 
@@ -697,7 +728,7 @@ void main() {
   ],
   'Mama Self Care Module': [
     'assets/care_1.png',
-    'assets/care_2.png',
+    'assets/edit_mama_care_2.png',
     'assets/care_3.png',
     'assets/care_4.png',
     'assets/care_5.png',

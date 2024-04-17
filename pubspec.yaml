@@ -37,6 +37,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  syncfusion_flutter_pdfviewer: ^25.1.40
 
 dev_dependencies:
   flutter_test:
@@ -106,6 +107,7 @@ flutter:
   - assets/Slide 36 - Food Guides_b.png
   - assets/Slide 37 - Food Guides_b.png
   - assets/Slide 38 - Food Guides_b.png
+  - assets/Slide 37 - Food Guides-revB.png
   - assets/Lesson1_1.png
   - assets/Lesson1_2.png
   - assets/Lesson1_3.png
@@ -213,10 +215,11 @@ flutter:
   - assets/lactation-6.png
   - assets/lactation-7.png
   - assets/care_1.png
-  - assets/care_2.png
+  - assets/edit_mama_care_2.png
   - assets/care_3.png
   - assets/care_4.png
   - assets/care_5.png
+  - assets/Rose_mobile_applications_privacy_April2024.pdf
 
 
   # The following line ensures that the Material Icons font is
